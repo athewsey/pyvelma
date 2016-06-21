@@ -52,13 +52,13 @@ A user keeps Velma informed of movements, suggestions, responses, and accusation
 Events in the game represent constraints on the solution (i.e. which character, weapon and room are in the 'murder' 
 hand), which Velma tracks:
 
-    - A player showing Velma a card in response to the user's suggestion confirms they have that particular card.
-    - A player responding to another player's suggestion indicates they have at least one of the character, room, or 
-      weapon suggested. (Assistant Velma is sneaky, and will let you enter which card it was if you catch a glimpse).
-    - A player unable to answer a suggestion indicates they have none of the suggested cards.
-    - An incorrect accusation (though very rare) invalidates a particular murder character/room/weapon set.
-      Traditionally, ousted players should remain in the game to answer suggestions so no immediate additional 
-      information about their cards is gained.
+- A player showing Velma a card in response to the user's suggestion confirms they have that particular card.
+- A player responding to another player's suggestion indicates they have at least one of the character, room, or 
+  weapon suggested. (Assistant Velma is sneaky, and will let you enter which card it was if you catch a glimpse).
+- A player unable to answer a suggestion indicates they have none of the suggested cards.
+- An incorrect accusation (though very rare) invalidates a particular murder character/room/weapon set.
+  Traditionally, ousted players should remain in the game to answer suggestions so no immediate additional 
+  information about their cards is gained.
 
 Bad human players keep a list of who has which card. Better human players keep a matrix of possible & forbidden card 
 locations (e.g. proved card X is not with player A, but it might still be with player B or in the murder solution).
@@ -73,11 +73,11 @@ character/room/weapon combination in the murder solution hand).
 In earlier stages, there are way too many to enumerate so instead Velma generates `HYPSAMPLECOUNT` feasible hypotheses 
 satisfying observed constraints. After every observed event:
 
-    - The new constraint is added to the appropriate list (e.g. narrowing down the forbidden locations matrix).
-    - Invalidated hypotheses not satisfying the new constraint are removed.
-    - If the estimated number of feasible hypotheses falls below a threshold, Velma replaces the hypotheses list with 
-      a fully enumerated, duplicate-free list of possibilities.
-    - Otherwise, replacement hypotheses are generated satisfying the new constraint to get back to `HYPSAMPLECOUNT`.
+- The new constraint is added to the appropriate list (e.g. narrowing down the forbidden locations matrix).
+- Invalidated hypotheses not satisfying the new constraint are removed.
+- If the estimated number of feasible hypotheses falls below a threshold, Velma replaces the hypotheses list with 
+  a fully enumerated, duplicate-free list of possibilities.
+- Otherwise, replacement hypotheses are generated satisfying the new constraint to get back to `HYPSAMPLECOUNT`.
 
 
 ### Statistics on the Hypothesis Set
@@ -144,10 +144,10 @@ with the expected score we can achieve if we roll the dice.
 
 By this process, Velma has ranked every decision involved in a turn:
 
-    - Whether to take a secret passage or roll the dice
-    - Where to move after rolling the dice
-    - What character and weapon to suggest if landing in a room
-    - What accusation to follow the suggestion with, if any
+- Whether to take a secret passage or roll the dice
+- Where to move after rolling the dice
+- What character and weapon to suggest if landing in a room
+- What accusation to follow the suggestion with, if any
 
 When asked to respond to a suggestion for which Velma holds multiple cards; the card already shown to the suggesting
 player (if any); or else the card most often shown previously will be chosen.
@@ -198,10 +198,10 @@ abilities of `matplotlib` were also extremely handy.
 
 To easily adapt this software to another environment, you will likely want (in descending order of importance):
 
-    1. A fast `Set` implementation with O(1) `includes`, and fast `union`/`difference` methods.
-    2. Easy support for parallelism and related optimisations.
-    3. A fast and easy facility to do maths on N-dimensional matrices.
-    4. An easy graphing library to debug and improve the algorithm.
+1. A fast `Set` implementation with O(1) `includes`, and fast `union`/`difference` methods.
+2. Easy support for parallelism and related optimisations.
+3. A fast and easy facility to do maths on N-dimensional matrices.
+4. An easy graphing library to debug and improve the algorithm.
 
 Since Velma's current code was written as an idle, exploratory project in such an environment without parallelism, 
 there's probably plenty of opportunities already to refactor for speed too.
@@ -218,17 +218,17 @@ procedures of all games to build a data set.
 
 Game logging implemented in Velma itself would:
 
-    - Contain a lot of uncertainty (as each player sees only a fraction of the total information in 3+ player games); 
-      **but**
-    - May form the basis of a mechanism for the detective to learn and adapt to new players without special access to 
-      usually unavailable information (e.g. when used as an assistant in real-life games).
+- Contain a lot of uncertainty (as each player sees only a fraction of the total information in 3+ player games); 
+  **but**
+- May form the basis of a mechanism for the detective to learn and adapt to new players without special access to 
+  usually unavailable information (e.g. when used as an assistant in real-life games).
 
 By contrast, logging implemented in a game server and subsequently post-processed by the detective would provide a more
 complete data set for testing theories of mind, but would not be available for 'live' running.
 
-    - Is it fair practice to examine everybody's hand at the end of the game? Maybe the answer is different if you have
-      a perfect memory of every suggestion made throughout.
-    - But "You had Miss Scarlett all along!" is a conceivable human conversation at the end of a game...
+- Is it fair practice to examine everybody's hand at the end of the game? Maybe the answer is different if you have
+  a perfect memory of every suggestion made throughout.
+- But "You had Miss Scarlett all along!" is a conceivable human conversation at the end of a game...
 
 
 ### The core-ui Interface and Code Structure (An Apology)

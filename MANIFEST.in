@@ -1,0 +1,6 @@
+include *.txt
+include bin *.py
+recursive-include doc *.pdf
+recursive-include doc *.txt
+recursive-include doc *.jpg
+recursive-include data data_*.txt
